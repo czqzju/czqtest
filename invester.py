@@ -1,5 +1,6 @@
 import random
 from selenium import webdriver
+from selenium.webdriver.support.ui import Select
 
 
 class investor:
@@ -8,6 +9,9 @@ class investor:
 
     def fillForm(self):
         self.driver.get("https://www.wjx.cn/jq/27950054.aspx")
+        finish = self.driver.find_element_by_class_name("finish")
+        if finish:
+            finish.click()
         elems = self.driver.find_elements_by_class_name("div_table_radio_question")
         for i in elems:
             underlines = i.find_elements_by_class_name('underline')
